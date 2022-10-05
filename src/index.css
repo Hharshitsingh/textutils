@@ -11,3 +11,20 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+
+/* Keyword value */
+z-index: auto;
+
+/* <integer> values */
+z-index: 0;
+z-index: 3;
+z-index: 289;
+z-index: -1; /* Negative values to lower the priority */
+
+/* Global values */
+z-index: inherit;
+z-index: initial;
+z-index: revert;
+z-index: revert-layer;
+z-index: unset;
