@@ -12,19 +12,79 @@ code {
     monospace;
 }
 
+/* Path: src/App.css */
 
-/* Keyword value */
-z-index: auto;
+.App {
+  text-align: center;
+}
 
-/* <integer> values */
-z-index: 0;
-z-index: 3;
-z-index: 289;
-z-index: -1; /* Negative values to lower the priority */
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
 
-/* Global values */
-z-index: inherit;
-z-index: initial;
-z-index: revert;
-z-index: revert-layer;
-z-index: unset;
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+/* Path: src/components/Counter.css */
+
+.Counter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.Counter-button {
+  margin: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.Counter-button:hover {
+  background-color: #eee;
+}
+
+.Counter-button:active {
+  background-color: #ddd;
+}
+
+.Counter-label {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.checkbox {
+  margin: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.checkbox:hover {
+  background-color: #eee;
+}
+
+.checkbox:active {
+  background-color: #ddd;
+}
+

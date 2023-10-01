@@ -10,10 +10,17 @@ const LoginButton = styled(Button)`
     box-shadow: 5px 5px 10px  2px rgba(88, 88, 88, 0.5);
 `;
 
+
+
 const loginInValues = {
     username: '',
     password: ''
 }
+
+const checkBoxValues = {
+    rememberMe: false
+}
+
 
 function App() {
 
@@ -42,6 +49,13 @@ const [loginValue, setloginValue] = useState(loginInValues);
         });
     }
 
+    const onCheckBox = (e) => {
+        setloginValue({
+            ...loginValue,
+            [e.target.name]: e.target.checked
+        });
+    }
+
     const loginUser = async () => {
 
         if (loginValue.username === '') {
@@ -60,11 +74,17 @@ const [loginValue, setloginValue] = useState(loginInValues);
        <ToastContainer />
             <TextField label="Username" variant="standard" value={loginValue.username} name="username" onChange={(e) => onInputLogin(e)} />
             <TextField label="Password" variant="standard" value={loginValue.password} name="password" onChange={(e) => onInputLogin(e)} />
-            <ReCAPTCHA
-                sitekey="Your client site key"
-                onChange={onChange}
-            />,
+            <br />
+            {/* add check box */}
+            <br />
+
+            <input type="checkbox" name="rememberMe" class="checkbox" onChange={(e) => onCheckBox(e)} />
+            <label>Remember Me</label>
+            <br />
             <LoginButton variant="contained" onClick={() => loginUser()}>Login</LoginButton>
+
+
+
     </div>
   );
 }
