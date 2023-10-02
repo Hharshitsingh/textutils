@@ -26,6 +26,60 @@ const [loginValue, setloginValue] = useState(loginInValues);
         });
     }
 
+    const loginUser = async () => {
+    if (loginValue.username === "") {
+        errorNotify("Username is required");
+        return;
+    } else if (loginValue.password === "") {
+        errorNotify("Password is required");
+        return;
+    }
+    const res = await axios.post(`${BASE_URL}/auth/login`, loginValue);
+    if (res.data.success) {
+        successNotify(res.data.message);
+        localStorage.setItem("firstLogin", true);
+        dispatch(login());
+        history.push("/");
+    } else {
+        errorNotify(res.data.message);
+    }
+}
+
+const responseGoogle = async (response) => {
+    try {
+        const res = await axios.post(`${BASE_URL}/auth/google_login`, {
+            tokenId: response.tokenId,
+        });
+        if (res.data.success) {
+            localStorage.setItem("firstLogin", true);
+            dispatch(login());
+            history.push("/");
+        } else {
+            errorNotify(res.data.message);
+        }
+    } catch (err) {
+        errorNotify(err.response.data.message);
+    }
+}  
+
+const responseFacebook = async (response) => {
+    try {
+        const { accessToken, userID } = response;
+        const res = await axios.post(`${BASE_URL}/auth/facebook_login`, {
+            accessToken,
+            userID,
+        });
+        if (res.data.success) {
+            localStorage.setItem("firstLogin", true);
+            dispatch(login());
+            history.push("/");
+        } else {
+            errorNotify(res.data.message);
+        }
+    } catch (err) {
+        errorNotify(err.response.data.message);
+    }
+}
     function onChange(value) {
         console.log("Captcha value:", value);
     }
